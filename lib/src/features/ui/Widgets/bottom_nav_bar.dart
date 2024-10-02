@@ -1,4 +1,5 @@
 import 'package:cleanarchi/src/features/ui/screens/moviescreen.dart';
+import 'package:cleanarchi/src/features/ui/screens/sampleLogin.dart';
 import 'package:cleanarchi/src/features/ui/screens/searchScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         bottomNavigationBar: Container(
           color: Colors.teal,
@@ -24,16 +25,22 @@ class BottomNavBar extends StatelessWidget {
                 icon: Icon(Icons.search),
                 text: "Search",
               ),
+              Tab(
+                icon: Icon(Icons.login),
+                text: "LOGIN",
+              ),
             ],
             unselectedLabelColor: Colors.white,
             labelColor: Colors.black,
             indicatorColor: Colors.transparent,
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            MovieScreen(),
-            Searchscreen(),
+            const MovieScreen(),
+            const Searchscreen(),
+            MyFormPage()
+
           ],
         ),
       ),
