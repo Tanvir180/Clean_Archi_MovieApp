@@ -1,4 +1,5 @@
 import 'package:cleanarchi/src/features/ui/Widgets/now_playing.dart';
+import 'package:cleanarchi/src/features/ui/Widgets/up_comming.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cleanarchi/src/features/ui/controller/movie_screen_controller.dart';
@@ -37,6 +38,14 @@ class MovieScreen extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                   )),
               NowPlaying(controller: controller),
+              Container(
+                  padding: EdgeInsets.all(15),
+                  width: MediaQuery.of(context).size.width,
+                  child: const Text(
+                    'Up Comming',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  )),
+              UpComming(controller: controller),
 
 
             ],

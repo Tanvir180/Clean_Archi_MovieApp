@@ -1,8 +1,7 @@
 import 'package:cleanarchi/src/features/Data/repositories/home_rep_imp.dart';
 import 'package:cleanarchi/src/features/Data/source/api_services_now_playing.dart';
-import 'package:cleanarchi/src/features/domain/repositories/home_repository.dart';
 import 'package:cleanarchi/src/features/domain/usecase/get_now_playing_movies.dart';
-import 'package:cleanarchi/src/features/ui/screens/moviescreen.dart';
+import 'package:cleanarchi/src/features/domain/usecase/get_up_comming_movies.dart';
 import 'package:cleanarchi/src/features/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,14 +18,18 @@ void main() {
   // Create an instance of the GetNowPlayingMoviesUseCase
   final getNowPlayingMoviesUseCase = GetNowPlayingMoviesUseCase(movieRepository);
 
-  // Register the MovieScreenController with its dependencies
-  Get.put(MovieScreenController(getNowPlayingMoviesUseCase));
+  final getUpCommingMoviesUseCase = GetUpCommingMoviesUseCase(movieRepository);
 
-  runApp(MyCounterApp());
+
+
+  // Register the MovieScreenController with its dependencies
+  Get.put(MovieScreenController(getNowPlayingMoviesUseCase, getUpCommingMoviesUseCase));
+
+  runApp(const MyCounterApp());
 }
 
 class MyCounterApp extends StatelessWidget {
-  MyCounterApp({super.key});
+  const MyCounterApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +53,7 @@ class MyCounterApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)
             .copyWith(surface: Colors.white),
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
